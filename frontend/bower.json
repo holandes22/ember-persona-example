@@ -1,0 +1,13 @@
+{
+  "name": "ember-app-kit",
+  "dependencies": {
+    "handlebars": "~1.1.2",
+    "jquery": "~2.0.3",
+    "qunit": "~1.12.0",
+    "ember": "~1.2.0",
+    "ember-data": "http://builds.emberjs.com/canary/ember-data.js",
+    "ember-resolver": "git://github.com/stefanpenner/ember-jj-abrams-resolver.git#master",
+    "ic-ajax": "~0.1",
+    "bootstrap": "~3.0.3",
+  }
+}

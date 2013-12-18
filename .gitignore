@@ -1,0 +1,20 @@
+# compiled output
+*/dist
+*/tmp
+/static/*
+
+# dependencies
+frontend/node_modules
+frontend/vendor/*
+!frontend/vendor/loader.js
+!frontend/vendor/browserid
+!frontend/vendor/ember-data-django-rest-adapter
+
+# misc
+frontend/.sass-cache
+frontend/connect.lock
+frontend/libpeerconnection.log
+.DS_Store
+Thumbs.db
+coverage
+.coverage
