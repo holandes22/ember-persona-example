@@ -4,7 +4,7 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.decorators import authentication_classes
 from rest_framework import status, exceptions
-from rest_framework.generics import RetrieveAPIView
+from rest_framework.generics import RetrieveAPIView, ListAPIView
 from django_browserid import verify, get_audience
 
 from backend.users.models import User
@@ -48,7 +48,19 @@ def logout(request):
     return Response()
 
 
+class UserListAPIView(ListAPIView):
+
+    model = User
+    serializer_class = UserSerializer
+
+    def get_queryset(self):
+        return User.objects.none()
+
+
 class UserDetailAPIView(RetrieveAPIView):
 
     model = User
     serializer_class = UserSerializer
+
+    def get_object(self):
+        return User.objects.get(pk=1)

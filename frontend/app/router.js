@@ -6,6 +6,7 @@ Router.map(function() {
     this.resource('cars', function() {
         this.resource('car', { path: ':car_id' });
     });
+    this.route('user', { path: '/user/profile' });
     //this.resource('login');
     //this.resource('logout');
 });

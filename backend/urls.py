@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.conf.urls import patterns, include, url
 
-from backend.users.views import UserDetailAPIView
+from backend.users.views import UserListAPIView, UserDetailAPIView
 from backend.cars.views import CarListAPIView, CarDetailAPIView
 
 
@@ -21,22 +21,27 @@ urlpatterns = patterns(
         name='car-detail',
     ),
     url(
-        r'^api/v1/user/auth/token/',
+        r'^api/user/auth/token/$',
         'users.views.get_auth_token',
         name='token',
     ),
     url(
-        r'^api/v1/user/auth/login/',
+        r'^api/user/auth/login/$',
         'users.views.login',
         name='login',
     ),
     url(
-        r'^api/v1/user/auth/logout/',
+        r'^api/user/auth/logout/$',
         'users.views.logout',
         name='logout',
     ),
     url(
-        r'^api/v1/user/',
+        r'^api/users/$',
+        UserListAPIView.as_view(),
+        name='user-list',
+    ),
+    url(
+        r'^api/users/(?P<pk>\d+/$)',
         UserDetailAPIView.as_view(),
         name='user-detail',
     ),
