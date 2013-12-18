@@ -1,6 +1,7 @@
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
+AUTH_USER_MODEL = 'users.User'
 
 SECRET_KEY = 'ku**4hysxg)lpghdun!lo)!gg_t_s--h!*1ffv!a98^r9x%(@%'
 
@@ -26,6 +27,7 @@ THIRD_PARTY_APPS = (
 
 LOCAL_APPS = (
     'backend.users',
+    'backend.cars',
 )
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
@@ -64,13 +66,12 @@ REST_FRAMEWORK = {
         'rest_framework.renderers.JSONRenderer',
     ),
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework.authentication.TokenAuthentication',
-        'rest_framework.authentication.SessionAuthentication',
+        #'rest_framework.authentication.TokenAuthentication',
+        #'rest_framework.authentication.SessionAuthentication',
     ),
     'DEFAULT_PERMISSION_CLASSES': (
-        'rest_framework.permissions.IsAuthenticated',
+        #'rest_framework.permissions.IsAuthenticated',
     ),
-    'FILTER_BACKEND': 'rest_framework.filters.DjangoFilterBackend',
 }
 
 BROWSERID_CREATE_USER = True

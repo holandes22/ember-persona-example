@@ -7,24 +7,5 @@
       <li class="divider-vertical"></li>
     </ul>
   </div>
-  <ul class="nav navbar-nav navbar-right">
-    <li class="dropdown">
-    {{#if isAuthenticated }}
-      <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user">
-      {{email}} <b class="caret"></b></a>
-      <ul class="dropdown-menu pull-right">
-        <li><a href="#">Profile</a></li>
-        <li class="divider"></li>
-        <li>
-          <a href="/browserid/logout/" data-next="None" class="browserid-logout">
-            <span>Log Out</span>
-          </a>
-        </li>
-      </ul>
-    {{else}}
-      {{link-to "Log In" "login"}}
-    {{/if}}
-    </li>
-  </ul>
 </nav>
 {{outlet}}
