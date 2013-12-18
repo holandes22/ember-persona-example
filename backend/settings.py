@@ -37,6 +37,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'backend.middleware.xssharing.XsSharingMiddleware',
 )
 
 ROOT_URLCONF = 'backend.urls'
@@ -73,3 +74,5 @@ REST_FRAMEWORK = {
 }
 
 BROWSERID_CREATE_USER = True
+XS_SHARING_ALLOWED_HEADERS = ["Content-Type"]
+XS_SHARING_ALLOWED_ORIGINS = 'http://localhost:8000'

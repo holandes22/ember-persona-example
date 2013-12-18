@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <ul class="nav nav-pills nav-stacked">
+        {{#with model as cars}}
+          {{#each car in cars}}
+            <li>{{link-to car.fullName 'car' car}}</li>
+          {{/each}}
+        {{/with}}
+      </ul>
+    </div>
+    <div class="col-md-9">
+      {{outlet}}
+    </div>
+  </div>
+</div>

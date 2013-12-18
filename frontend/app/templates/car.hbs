@@ -1,0 +1,20 @@
+<div>
+    {{#with model as car}}
+    <div class="row">
+      <legend>Car Details</legend>
+      <table class="table table-striped">
+        <tr>
+          <th>Brand</th>
+          <th>Model</th>
+        </tr>
+        <tr>
+          <td>{{car.brand}}</td>
+          <td>{{car.model}}</td>
+        </tr>
+      </table>
+    </div>
+    <div class="row">
+      {{outlet}}
+    </div>
+    {{/with}}
+</div>
