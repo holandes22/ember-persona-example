@@ -1,7 +1,7 @@
 from django.contrib import admin
-from django.conf import settings
 from django.conf.urls import patterns, include, url
 
+from backend.users.views import UserDetailAPIView
 from backend.cars.views import CarListAPIView, CarDetailAPIView
 
 
