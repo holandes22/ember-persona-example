@@ -7,8 +7,8 @@ Router.map(function() {
         this.resource('car', { path: ':car_id' });
     });
     this.route('user', { path: '/user/profile' });
-    //this.resource('login');
-    //this.resource('logout');
+    this.resource('login');
+    this.resource('logout');
 });
 
 export default Router;

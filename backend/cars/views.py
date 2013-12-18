@@ -12,12 +12,12 @@ class CarListAPIView(ListAPIView):
     model = Car
     serializer_class = CarSerializer
 
-    #def get_queryset(self):
-    #    return Car.objects.filter(user=self.request.user)
+    def get_queryset(self):
+        return Car.objects.filter(user=self.request.user)
 
 
 class CarDetailAPIView(RetrieveAPIView):
 
     model = Car
     serializer_class = CarSerializer
-    #permission_classes = (IsAuthenticated, CarOwnerPermission)
+    permission_classes = (IsAuthenticated, CarOwnerPermission)

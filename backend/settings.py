@@ -5,6 +5,8 @@ AUTH_USER_MODEL = 'users.User'
 
 SECRET_KEY = 'ku**4hysxg)lpghdun!lo)!gg_t_s--h!*1ffv!a98^r9x%(@%'
 
+SITE_URL = ['http://localhost:8888']
+
 DEBUG = True
 TEMPLATE_DEBUG = True
 
@@ -61,19 +63,23 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'django_browserid.auth.BrowserIDBackend',
+)
+
 REST_FRAMEWORK = {
     'DEFAULT_RENDERER_CLASSES': (
         'rest_framework.renderers.JSONRenderer',
     ),
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        #'rest_framework.authentication.TokenAuthentication',
-        #'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
     ),
     'DEFAULT_PERMISSION_CLASSES': (
-        #'rest_framework.permissions.IsAuthenticated',
+        'rest_framework.permissions.IsAuthenticated',
     ),
 }
 
 BROWSERID_CREATE_USER = True
-XS_SHARING_ALLOWED_HEADERS = ["Content-Type"]
+XS_SHARING_ALLOWED_HEADERS = ['Content-Type', 'Authorization']
 XS_SHARING_ALLOWED_ORIGINS = 'http://localhost:8000'

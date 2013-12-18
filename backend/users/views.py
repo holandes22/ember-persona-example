@@ -1,25 +1,15 @@
+from django.contrib import auth
 from django.contrib.auth import logout as django_logout
 
+from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.decorators import authentication_classes
-from rest_framework import status, exceptions
 from rest_framework.generics import RetrieveAPIView, ListAPIView
-from django_browserid import verify, get_audience
+from django_browserid.base import BrowserIDException
 
 from backend.users.models import User
 from backend.users.serializers import UserSerializer
-
-
-@api_view(['GET'])
-def get_auth_token(request):
-
-    if request.user.is_authenticated:
-        return Response(
-            request.user.get_auth_token(),
-            status.HTTP_200_OK
-        )
-        raise exceptions.NotAuthenticated()
 
 
 @api_view(['POST'])
@@ -32,20 +22,22 @@ def login(request):
             'assertion parameter is missing',
             status.HTTP_400_BAD_REQUEST
         )
-    audience = get_audience(request)
-    response = verify(assertion, audience)
-    if response['status'] == 'okay':
-        return Response({'email': response['email']})
-    return Response(
-        'Mozilla Persona assertion failed',
-        status.HTTP_500_INTERNAL_SERVER_ERROR
-    )
-
-
-@api_view(['POST'])
-def logout(request):
-    django_logout(request)
-    return Response()
+    audience = 'http://localhost:8000'
+    try:
+        user = auth.authenticate(
+            assertion=assertion,
+            audience=audience,
+        )
+        auth.login(request, user)
+        return Response({
+            'email': user.email,
+            'token': user.get_auth_token(),
+        })
+    except BrowserIDException as error:
+        return Response(
+            str(error),
+            status.HTTP_500_INTERNAL_SERVER_ERROR,
+        )
 
 
 class UserListAPIView(ListAPIView):
@@ -63,4 +55,4 @@ class UserDetailAPIView(RetrieveAPIView):
     serializer_class = UserSerializer
 
     def get_object(self):
-        return User.objects.get(pk=1)
+        return self.request.user

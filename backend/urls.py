@@ -21,19 +21,9 @@ urlpatterns = patterns(
         name='car-detail',
     ),
     url(
-        r'^api/user/auth/token/$',
-        'users.views.get_auth_token',
-        name='token',
-    ),
-    url(
-        r'^api/user/auth/login/$',
+        r'^api/auth/login/$',
         'users.views.login',
         name='login',
-    ),
-    url(
-        r'^api/user/auth/logout/$',
-        'users.views.logout',
-        name='logout',
     ),
     url(
         r'^api/users/$',
