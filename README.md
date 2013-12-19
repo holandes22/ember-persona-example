@@ -7,13 +7,13 @@ The app shows a list of cars that belong to the user (No UI for this atm, add th
 ### The technologies used:
 
 * frontend
-    Ember.js
-    ember-data
-    ember-data-django-rest-adapter
+    - Ember.js https://github.com/emberjs/ember.js
+    - ember-data https://github.com/emberjs/data
+    - ember-data-django-rest-adapter https://github.com/toranb/ember-data-django-rest-adapter
 * backend
-    Django
-    Django REST Framework
-    django-browserid
+    - Django https://www.djangoproject.com/
+    - Django REST Framework http://django-rest-framework.org/
+    - django-browserid https://github.com/mozilla/django-browserid
 
 ### Architecture
 
@@ -58,3 +58,10 @@ For the backend
 
 Open a browser and go to http://localhost:8000. Go to the login section and press the login with Persona button to
 authenticate.
+
+## TODO
+
+- deploy to heroku
+- Vagrant for dev env
+- dev install script
+- Allow car add/delete/edit
