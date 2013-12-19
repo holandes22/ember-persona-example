@@ -4,23 +4,25 @@
       <li>
           {{link-to "Cars" "cars"}}
       </li>
-      <li>
-          {{link-to "Profile" "user"}}
-      </li>
-      <li>
-          {{link-to "Log In" "login"}}
-      </li>
-      <li>
-          <a href="#" {{action 'logout'}}>Log Out</a>
-      </li>
       <li class="divider-vertical"></li>
     </ul>
   </div>
   <ul class="nav navbar-nav navbar-right">
     <li class="dropdown">
-      <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-        <span class="glyphicon glyphicon-user"></span> {{loggedInUser}} <b class="caret"></b>
-      </a>
+    {{#if loggedInUser}}
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{loggedInUser}} <b class="caret"></b></a>
+      <ul class="dropdown-menu pull-right">
+        <li>
+            {{link-to "Profile" "user"}}
+        </li>
+        <li class="divider-vertical"></li>
+        <li>
+            <a href="#" {{action 'logout'}}>Log Out</a>
+        </li>
+      </ul>
+    {{else}}
+      {{link-to "Log In" "login"}}
+    {{/if}}
     </li>
   </ul>
 </nav>

@@ -1,5 +1,4 @@
 from django.contrib import auth
-from django.contrib.auth import logout as django_logout
 
 from rest_framework import status
 from rest_framework.response import Response
@@ -22,20 +21,20 @@ def login(request):
             'assertion parameter is missing',
             status.HTTP_400_BAD_REQUEST
         )
+    # TODO: Get audience from settings
     audience = 'http://localhost:8000'
     try:
         user = auth.authenticate(
             assertion=assertion,
             audience=audience,
         )
-        auth.login(request, user)
         return Response({
             'email': user.email,
             'token': user.get_auth_token(),
         })
-    except BrowserIDException as error:
+    except BrowserIDException:
         return Response(
-            str(error),
+            'Authentication failed',
             status.HTTP_500_INTERNAL_SERVER_ERROR,
         )
 
