@@ -6,14 +6,14 @@ The app shows a list of cars that belong to the user (No UI for this atm, add th
 
 ### The technologies used:
 
-    * frontend
-    ** Ember.js
-    ** ember-data
-    ** ember-data-django-rest-adapter
-    * backend
-    ** Django
-    ** Django REST Framework
-    ** django-browserid
+* frontend
+** Ember.js
+** ember-data
+** ember-data-django-rest-adapter
+* backend
+** Django
+** Django REST Framework
+** django-browserid
 
 ### Architecture
 
